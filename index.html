@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A l'aveugle</title>
+    <link rel="stylesheet" href="style.min.css">
+    <link rel="stylesheet" id="stepStyle" href="style_1.min.css">
+</head>
+
+<body>
+    <div id="body-content">
+        <div class="emoji emoji-1">
+            <div class="face">
+                <div class="eyebrows">
+                    <div class="eyebrow eyebrow-1"></div>
+                    <div class="eyebrow eyebrow-2"></div>
+                </div>
+                <div class="eyes">
+                    <div class="eye eye-1"></div>
+                    <div class="eye eye-2"></div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+        <div class="emoji emoji-2">
+            <div class="face">
+                <div class="eyes">
+                    <div class="eye eye-1"></div>
+                    <div class="eye eye-2"></div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+        <div class="emoji emoji-3">
+            <div class="face">
+                <div class="eyes">
+                    <div class="eye eye-1"></div>
+                    <div class="eye eye-2"></div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+        <div class="emoji emoji-4">
+            <div class="face">
+                <div class="eyes">
+                    <div class="eye eye-1"></div>
+                    <div class="eye eye-2"></div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+        <div class="emoji emoji-5">
+            <div class="face">
+                <div class="eyes">
+                    <div class="eye eye-1"></div>
+                    <div class="eye eye-2"></div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="controls">
+        <div class="close">
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+        <div class="path path-1">
+            <span class="point point-1"></span>
+            <span class="line line-1"></span>
+            <span class="point point-2"></span>
+            <span class="line line-2"></span>
+            <span class="point point-3"></span>
+        </div>
+        <div class="content">
+            <div class="step">
+                <button id="step_1">étape 1</button>
+                <span class="time"> en 50 min 00 sec</span>
+            </div>
+            <p class="info">J'ai le droit de regarder le résultat pendant 30 secondes</p>
+            <div class="step">
+                <button id="step_2">étape 2</button>
+                <span class="time"> en 05 min 31 sec</span>
+            </div>
+            <p class="info">Challenge terminé ! Je continue pour que ça rende comme la maquette</p>
+            <div class="step">
+                <button id="step_3">étape 3</button>
+                <span class="time"> en 09 min 35 sec</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        const buttons = document.querySelectorAll('#controls button');
+        buttons.forEach(
+            (button) => {
+                button.addEventListener('click', (e) => {
+                    document.getElementById('stepStyle').href = `style_${e.target.id.split('_')[1]}.min.css`;
+
+                    // add color to path
+                    const path = document.querySelector('.path');
+                    path.classList.remove('path-1', 'path-2', 'path-3');
+                    path.classList.add(`path-${e.target.id.split('_')[1]}`);
+
+                });
+            }
+        );
+
+        const close = document.querySelector('.close');
+        close.addEventListener('click', () => {
+            document.getElementById('controls').classList.toggle('closed');
+        });
+    </script>
+</body>
+
+</html>
